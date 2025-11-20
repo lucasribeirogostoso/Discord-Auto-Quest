@@ -1,0 +1,162 @@
+==========================================
+DISCORD AUTO QUEST - COMO USAR
+==========================================
+
+✅ BUILD CONCLUÍDO COM SUCESSO!
+
+==========================================
+ARQUIVOS GERADOS:
+==========================================
+
+📦 INSTALADOR (Recomendado):
+   Localização: release\Discord Auto Quest Setup 1.0.0.exe
+   Tamanho: ~79.5 MB
+   
+   Como usar:
+   1. Execute o instalador
+   2. Siga as instruções na tela
+   3. O app será instalado no seu sistema
+   4. Um atalho será criado na área de trabalho
+
+📁 VERSÃO PORTÁVEL:
+   Localização: release\win-unpacked\Discord Auto Quest.exe
+   
+   Como usar:
+   1. Execute diretamente sem instalação
+   2. Pode mover a pasta inteira para qualquer lugar
+   3. Não precisa de instalação
+
+==========================================
+COMO USAR O APLICATIVO:
+==========================================
+
+1. ABRA O DISCORD DESKTOP
+   - Certifique-se que o Discord está rodando
+   - IMPORTANTE: Precisa ser o Discord Desktop, não funciona apenas com navegador
+
+2. EXECUTE O DISCORD AUTO QUEST
+   - Execute o instalador ou o .exe portável
+   
+3. PRIMEIRA EXECUÇÃO
+   - Leia e aceite o disclaimer
+   - Escolha seu idioma (Português ou English)
+   - Configure o tema (Claro ou Escuro)
+   - Configure as opções conforme preferir
+
+4. USE A APLICAÇÃO
+   - Dashboard: Aguarde até aparecer "Discord Detectado"
+   - Clique no botão "Executar Automação de Quest"
+   - Observe os logs no console
+   - Acompanhe o progresso
+
+5. VEJA AS ESTATÍSTICAS
+   - Aba "Estatísticas": Veja quests completadas, tempo economizado, etc
+   - Aba "Histórico": Veja todas as quests executadas
+   - Aba "Configurações": Ajuste preferências
+
+==========================================
+FUNCIONALIDADES:
+==========================================
+
+✨ DASHBOARD
+   - Status do Discord em tempo real
+   - Botão para executar automação
+   - Console com logs ao vivo
+   - Aviso legal
+
+📊 ESTATÍSTICAS
+   - Total de quests completadas
+   - Tempo total economizado
+   - Taxa de sucesso
+   - Última quest completada
+
+📜 HISTÓRICO
+   - Registro completo de todas as quests
+   - Busca e filtros
+   - Data, duração e status
+   - Limpar histórico
+
+⚙️ CONFIGURAÇÕES
+   - Idioma (PT-BR/EN)
+   - Tema (Claro/Escuro)
+   - Execução automática
+   - Notificações
+
+==========================================
+TIPOS DE QUEST SUPORTADOS:
+==========================================
+
+✅ Watch Video
+✅ Watch Video on Mobile
+✅ Play on Desktop
+✅ Stream on Desktop
+✅ Play Activity
+
+==========================================
+DESENVOLVIMENTO:
+==========================================
+
+Para rodar em modo desenvolvimento:
+   npm run dev
+
+Para fazer build:
+   npm run build:win    (Windows)
+   npm run build:mac    (macOS)
+   npm run build:linux  (Linux)
+
+==========================================
+PROBLEMAS COMUNS:
+==========================================
+
+❌ "Discord Não Encontrado"
+   Solução: Certifique-se que o Discord Desktop está rodando
+
+❌ Windows Defender bloqueia
+   Solução: Normal para apps não assinados. Adicione exceção.
+
+❌ Não encontra quests
+   Solução: 
+   - Certifique-se que você tem uma quest ativa
+   - Aguarde o Discord carregar completamente
+   - Reinicie o Discord e o aplicativo
+
+==========================================
+AVISO IMPORTANTE:
+==========================================
+
+⚠️ Este software pode violar os Termos de Serviço do Discord
+⚠️ Use por sua conta e risco
+⚠️ Os desenvolvedores não se responsabilizam por consequências
+
+==========================================
+DOCUMENTAÇÃO COMPLETA:
+==========================================
+
+README.md          - Documentação principal
+QUICK_START.md     - Guia rápido de 5 minutos
+INSTALLATION.md    - Instruções detalhadas
+docs/FAQ.md        - Perguntas frequentes
+docs/API.md        - Documentação técnica
+
+==========================================
+ARQUIVOS DO PROJETO:
+==========================================
+
+src/                - Código fonte
+├── main/          - Backend (Electron)
+├── renderer/      - Frontend (React)
+├── preload/       - Bridge IPC
+└── types/         - TypeScript types
+
+dist/              - Build do React
+dist-electron/     - Build do Electron
+release/           - Instaladores finais
+
+==========================================
+
+✅ O PROJETO ESTÁ 100% FUNCIONAL!
+
+Aproveite o Discord Auto Quest! 🎉
+
+==========================================
+

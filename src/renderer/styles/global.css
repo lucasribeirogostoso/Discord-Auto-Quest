@@ -1,0 +1,57 @@
+@import './minimal-design.css';
+@import './neon-cyberpunk.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for IDE Theme */
+:root {
+  --bg-primary: var(--neo-bg-light);
+  --bg-secondary: var(--neo-surface-light);
+  --bg-surface: var(--neo-surface-light);
+  --text-primary: var(--neo-text-light);
+  --text-secondary: var(--neo-text-secondary-light);
+  --text-tertiary: #999;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --accent: var(--neo-accent);
+}
+
+.dark {
+  --bg-primary: var(--neo-bg-dark);
+  --bg-secondary: var(--neo-surface-dark);
+  --bg-surface: var(--neo-surface-dark);
+  --text-primary: var(--neo-text-dark);
+  --text-secondary: var(--neo-text-secondary-dark);
+  --text-tertiary: #666;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+::selection {
+  background-color: rgba(0, 122, 204, 0.3);
+  color: var(--text-primary);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

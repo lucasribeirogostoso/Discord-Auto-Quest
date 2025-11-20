@@ -1,0 +1,104 @@
+{
+  "name": "discord-auto-quest",
+  "version": "1.0.0",
+  "description": "Discord Quest Automation Tool with Beautiful UI",
+  "main": "dist-electron/main/index.js",
+  "author": "Discord Auto Quest Team",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "build:win": "tsc && vite build && electron-builder --win",
+    "build:mac": "tsc && vite build && electron-builder --mac",
+    "build:linux": "tsc && vite build && electron-builder --linux",
+    "preview": "vite preview",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@types/node-cron": "^3.0.11",
+    "@types/uuid": "^10.0.0",
+    "active-win": "^8.1.0",
+    "chrome-remote-interface": "^0.33.0",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.4",
+    "i18next": "^23.7.6",
+    "lucide-react": "^0.294.0",
+    "node-cron": "^4.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.5.0",
+    "tcp-port-used": "^1.0.2",
+    "uuid": "^13.0.0",
+    "ws": "^8.18.3",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/node-fetch": "^2.6.13",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@types/ws": "^8.18.1",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vite-plugin-electron": "^0.28.1",
+    "vite-plugin-electron-renderer": "^0.14.5"
+  },
+  "build": {
+    "appId": "com.discordautoquest.app",
+    "productName": "Discord Auto Quest",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "resources/icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "resources/icon.icns",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "resources/icon.png",
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "lucasribeirogostoso",
+        "repo": "Discord-Auto-Quest",
+        "releaseType": "draft"
+      }
+    ]
+  }
+}

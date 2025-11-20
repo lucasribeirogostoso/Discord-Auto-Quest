@@ -1,0 +1,57 @@
+{
+  "appId": "com.discordautoquest.app",
+  "productName": "Discord Auto Quest",
+  "directories": {
+    "output": "release",
+    "buildResources": "resources"
+  },
+  "files": [
+    "dist/**/*",
+    "dist-electron/**/*",
+    "package.json"
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "resources/icon.ico",
+    "artifactName": "${productName}-${version}-Setup.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "allowElevation": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Discord Auto Quest",
+    "uninstallDisplayName": "Discord Auto Quest",
+    "installerIcon": "resources/icon.ico",
+    "uninstallerIcon": "resources/icon.ico",
+    "installerHeaderIcon": "resources/icon.ico"
+  },
+  "mac": {
+    "target": ["dmg"],
+    "icon": "resources/icon.icns",
+    "category": "public.app-category.utilities",
+    "artifactName": "${productName}-${version}.${ext}",
+    "hardenedRuntime": true,
+    "gatekeeperAssess": false
+  },
+  "dmg": {
+    "title": "${productName} ${version}",
+    "icon": "resources/icon.icns"
+  },
+  "linux": {
+    "target": ["AppImage", "deb"],
+    "icon": "resources/icon.png",
+    "category": "Utility",
+    "artifactName": "${productName}-${version}.${ext}"
+  },
+  "appImage": {
+    "license": "LICENSE"
+  }
+}
+

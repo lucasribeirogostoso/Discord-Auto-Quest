@@ -1,0 +1,417 @@
+/* Neomorphic Design System */
+
+:root {
+  /* Light Mode Colors */
+  --neo-bg-light: #E8E8E8;
+  --neo-surface-light: #F5F5F5;
+  --neo-text-light: #2C2C2C;
+  --neo-text-secondary-light: #6C6C6C;
+  
+  /* Dark Mode Colors */
+  --neo-bg-dark: #1E1E1E;
+  --neo-surface-dark: #252526;
+  --neo-text-dark: #CCCCCC;
+  --neo-text-secondary-dark: #858585;
+  
+  /* Shadows - Light Mode */
+  --neo-shadow-light-out: 8px 8px 16px rgba(163, 163, 163, 0.5),
+                          -8px -8px 16px rgba(255, 255, 255, 0.5);
+  --neo-shadow-light-in: inset 8px 8px 16px rgba(163, 163, 163, 0.5),
+                         inset -8px -8px 16px rgba(255, 255, 255, 0.5);
+  --neo-shadow-light-hover: 12px 12px 24px rgba(163, 163, 163, 0.6),
+                            -12px -12px 24px rgba(255, 255, 255, 0.6);
+  
+  /* Shadows - Dark Mode */
+  --neo-shadow-dark-out: 8px 8px 16px rgba(0, 0, 0, 0.5),
+                         -8px -8px 16px rgba(60, 60, 60, 0.3);
+  --neo-shadow-dark-in: inset 8px 8px 16px rgba(0, 0, 0, 0.5),
+                        inset -8px -8px 16px rgba(60, 60, 60, 0.3);
+  --neo-shadow-dark-hover: 12px 12px 24px rgba(0, 0, 0, 0.6),
+                           -12px -12px 24px rgba(60, 60, 60, 0.4);
+  
+  /* Accent Colors */
+  --neo-accent: #007ACC;
+  --neo-accent-hover: #005A9E;
+  --neo-success: #4EC9B0;
+  --neo-error: #F48771;
+  --neo-warning: #DCDCAA;
+  --neo-info: #569CD6;
+  
+  /* Border Radius */
+  --neo-radius-sm: 8px;
+  --neo-radius-md: 12px;
+  --neo-radius-lg: 16px;
+  --neo-radius-xl: 20px;
+  
+  /* Spacing */
+  --neo-spacing-xs: 4px;
+  --neo-spacing-sm: 8px;
+  --neo-spacing-md: 16px;
+  --neo-spacing-lg: 24px;
+  --neo-spacing-xl: 32px;
+  
+  /* Transitions */
+  --neo-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Neomorphic Card */
+.neo-card {
+  background: var(--neo-surface-light);
+  border-radius: var(--neo-radius-md);
+  box-shadow: var(--neo-shadow-light-out);
+  transition: var(--neo-transition);
+  border: none;
+}
+
+.neo-card:hover {
+  box-shadow: var(--neo-shadow-light-hover);
+  transform: translateY(-2px);
+}
+
+.neo-card:active {
+  box-shadow: var(--neo-shadow-light-in);
+  transform: translateY(0);
+}
+
+/* Dark Mode */
+.dark .neo-card {
+  background: var(--neo-surface-dark);
+  box-shadow: var(--neo-shadow-dark-out);
+  color: var(--neo-text-dark);
+}
+
+.dark .neo-card:hover {
+  box-shadow: var(--neo-shadow-dark-hover);
+}
+
+.dark .neo-card:active {
+  box-shadow: var(--neo-shadow-dark-in);
+}
+
+/* Neomorphic Button */
+.neo-button {
+  background: var(--neo-surface-light);
+  border: none;
+  border-radius: var(--neo-radius-sm);
+  padding: 12px 24px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: var(--neo-shadow-light-out);
+  transition: var(--neo-transition);
+  color: var(--neo-text-light);
+}
+
+.neo-button:hover {
+  box-shadow: var(--neo-shadow-light-hover);
+  transform: translateY(-2px);
+}
+
+.neo-button:active {
+  box-shadow: var(--neo-shadow-light-in);
+  transform: translateY(0);
+}
+
+.neo-button.primary {
+  background: var(--neo-accent);
+  color: white;
+  box-shadow: 8px 8px 16px rgba(0, 122, 204, 0.3),
+              -8px -8px 16px rgba(0, 122, 204, 0.1);
+}
+
+.neo-button.primary:hover {
+  background: var(--neo-accent-hover);
+  box-shadow: 12px 12px 24px rgba(0, 122, 204, 0.4),
+              -12px -12px 24px rgba(0, 122, 204, 0.2);
+}
+
+.dark .neo-button {
+  background: var(--neo-surface-dark);
+  box-shadow: var(--neo-shadow-dark-out);
+  color: var(--neo-text-dark);
+}
+
+.dark .neo-button:hover {
+  box-shadow: var(--neo-shadow-dark-hover);
+}
+
+.dark .neo-button:active {
+  box-shadow: var(--neo-shadow-dark-in);
+}
+
+/* Neomorphic Input */
+.neo-input {
+  background: var(--neo-surface-light);
+  border: none;
+  border-radius: var(--neo-radius-sm);
+  padding: 12px 16px;
+  box-shadow: var(--neo-shadow-light-in);
+  transition: var(--neo-transition);
+  color: var(--neo-text-light);
+  font-size: 14px;
+  width: 100%;
+}
+
+.neo-input:focus {
+  outline: none;
+  box-shadow: var(--neo-shadow-light-out);
+  background: var(--neo-bg-light);
+}
+
+.neo-input::placeholder {
+  color: var(--neo-text-secondary-light);
+}
+
+.dark .neo-input {
+  background: var(--neo-surface-dark);
+  box-shadow: var(--neo-shadow-dark-in);
+  color: var(--neo-text-dark);
+}
+
+.dark .neo-input:focus {
+  box-shadow: var(--neo-shadow-dark-out);
+  background: var(--neo-bg-dark);
+}
+
+.dark .neo-input::placeholder {
+  color: var(--neo-text-secondary-dark);
+}
+
+/* Neomorphic Tab */
+.neo-tab {
+  background: transparent;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  position: relative;
+  color: var(--neo-text-secondary-light);
+  transition: var(--neo-transition);
+  border-top: 2px solid transparent;
+}
+
+.neo-tab:hover {
+  color: var(--neo-text-light);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.neo-tab.active {
+  color: var(--neo-accent);
+  border-top-color: var(--neo-accent);
+  background: rgba(0, 122, 204, 0.05);
+}
+
+.dark .neo-tab {
+  color: var(--neo-text-secondary-dark);
+}
+
+.dark .neo-tab:hover {
+  color: var(--neo-text-dark);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .neo-tab.active {
+  color: var(--neo-accent);
+  background: rgba(0, 122, 204, 0.1);
+}
+
+/* Neomorphic Panel */
+.neo-panel {
+  background: var(--neo-surface-light);
+  border-radius: var(--neo-radius-md);
+  box-shadow: var(--neo-shadow-light-out);
+  padding: var(--neo-spacing-md);
+}
+
+.dark .neo-panel {
+  background: var(--neo-surface-dark);
+  box-shadow: var(--neo-shadow-dark-out);
+}
+
+/* Neomorphic Divider */
+.neo-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.1),
+    transparent
+  );
+  border: none;
+  margin: var(--neo-spacing-md) 0;
+}
+
+.dark .neo-divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+/* Status Indicator */
+.neo-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.neo-status.online {
+  background: var(--neo-success);
+  color: var(--neo-success);
+}
+
+.neo-status.offline {
+  background: var(--neo-error);
+  color: var(--neo-error);
+}
+
+/* Scrollbar Neomorphic */
+.neo-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.neo-scrollbar::-webkit-scrollbar-track {
+  background: var(--neo-surface-light);
+  border-radius: 4px;
+}
+
+.neo-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--neo-surface-light);
+  border-radius: 4px;
+  box-shadow: var(--neo-shadow-light-in);
+}
+
+.neo-scrollbar::-webkit-scrollbar-thumb:hover {
+  box-shadow: var(--neo-shadow-light-out);
+}
+
+.dark .neo-scrollbar::-webkit-scrollbar-track {
+  background: var(--neo-surface-dark);
+}
+
+.dark .neo-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--neo-surface-dark);
+  box-shadow: var(--neo-shadow-dark-in);
+}
+
+.dark .neo-scrollbar::-webkit-scrollbar-thumb:hover {
+  box-shadow: var(--neo-shadow-dark-out);
+}
+
+/* IDE-like Styles */
+.ide-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--neo-bg-light);
+}
+
+.dark .ide-container {
+  background: var(--neo-bg-dark);
+}
+
+.ide-topbar {
+  height: 40px;
+  background: var(--neo-surface-light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--neo-spacing-md);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dark .ide-topbar {
+  background: var(--neo-surface-dark);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.ide-sidebar {
+  background: var(--neo-surface-light);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  width: 250px;
+  overflow-y: auto;
+  transition: width 0.3s ease;
+}
+
+.ide-sidebar.collapsed {
+  width: 50px;
+}
+
+.dark .ide-sidebar {
+  background: var(--neo-surface-dark);
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.ide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ide-tabs {
+  display: flex;
+  background: var(--neo-surface-light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.dark .ide-tabs {
+  background: var(--neo-surface-dark);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.ide-tab-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--neo-spacing-lg);
+}
+
+.ide-bottombar {
+  height: 60px;
+  background: var(--neo-surface-light);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dark .ide-bottombar {
+  background: var(--neo-surface-dark);
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.neo-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.neo-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
