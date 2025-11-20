@@ -1,6 +1,6 @@
 {
   "name": "discord-auto-quest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Discord Quest Automation Tool with Beautiful UI",
   "main": "dist-electron/main/index.js",
   "author": "Discord Auto Quest Team",

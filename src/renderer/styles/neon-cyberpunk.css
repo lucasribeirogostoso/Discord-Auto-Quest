@@ -107,23 +107,6 @@
   color: var(--neon-text-primary);
   position: relative;
   z-index: 5;
-  background: radial-gradient(circle at top left, rgba(0, 240, 255, 0.08), transparent 45%),
-              radial-gradient(circle at bottom right, rgba(255, 0, 85, 0.08), transparent 40%),
-              linear-gradient(135deg, rgba(12, 12, 18, 0.95), rgba(5, 5, 10, 0.9));
-  border-radius: 28px 0 0 28px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 240, 255, 0.05);
-  overflow: hidden;
-}
-
-.view-container::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 28px 0 0 28px;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 40%);
-  opacity: 0.4;
-  pointer-events: none;
 }
 
 .view-container h1 {

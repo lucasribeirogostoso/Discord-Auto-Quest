@@ -25,30 +25,31 @@ const DiscordQuestCard: React.FC<DiscordQuestCardProps> = ({
   const accentColor = settings.accentColor || '#5865F2';
   const [imageError, setImageError] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+  const isLibraryMode = hideExecuteButton && isCompleted;
+
   // Buscar progresso atualizado em tempo real
   const [activeProgress, setActiveProgress] = useState<QuestProgress | null>(
     quest.id ? getQuestProgress(quest.id) : null
   );
-  
+
   const isInProgress = activeProgress !== null;
-  
+
   // Atualizar progresso em tempo real a cada segundo
   useEffect(() => {
     if (!quest.id) return;
-    
+
     // Buscar progresso inicial
     const initialProgress = getQuestProgress(quest.id);
     setActiveProgress(initialProgress);
-    
+
     const interval = setInterval(() => {
       const latestProgress = getQuestProgress(quest.id!);
-      setActiveProgress(prev => {
+      setActiveProgress((prev) => {
         // Só atualizar se o progresso mudou
         if (!latestProgress && !prev) return prev;
         if (!latestProgress) return null;
         if (!prev) return latestProgress;
-        
+
         // Comparar valores para evitar re-renders desnecessários
         if (
           latestProgress.secondsDone !== prev.secondsDone ||
@@ -60,7 +61,7 @@ const DiscordQuestCard: React.FC<DiscordQuestCardProps> = ({
         return prev;
       });
     }, 1000); // Atualizar a cada segundo para animação suave
-    
+
     return () => clearInterval(interval);
   }, [quest.id, getQuestProgress]);
 
@@ -203,13 +204,22 @@ const DiscordQuestCard: React.FC<DiscordQuestCardProps> = ({
 
   const imageUrl = getImageUrl();
 
+  const cardClassNames = [
+    'relative',
+    'overflow-hidden',
+    'rounded-2xl',
+    'transition-all',
+    'duration-300',
+    isHighContrast ? 'bg-hc-secondary border-2 border-hc' : 'bg-gray-900/90 border border-gray-800',
+  ];
+
+  if (!isLibraryMode) {
+    cardClassNames.push('group', 'hover:scale-[1.02]', 'hover:shadow-2xl');
+  }
+
   return (
     <div
-      className={`relative group overflow-hidden rounded-2xl transition-all duration-300 ${
-        isHighContrast
-          ? 'bg-hc-secondary border-2 border-hc'
-          : 'bg-gray-900/90 border border-gray-800'
-      } ${!hideExecuteButton ? 'hover:scale-[1.02] hover:shadow-2xl' : ''}`}
+      className={cardClassNames.join(' ')}
       style={
         !isHighContrast
           ? {
@@ -255,9 +265,9 @@ const DiscordQuestCard: React.FC<DiscordQuestCardProps> = ({
         )}
         {/* Dark overlay for text readability */}
         <div
-          className={`absolute inset-0 ${
-            isHighContrast ? 'bg-hc-primary/80' : 'bg-black/60'
-          } group-hover:bg-black/70 transition-colors`}
+          className={`absolute inset-0 ${isHighContrast ? 'bg-hc-primary/80' : 'bg-black/60'} ${
+            !isLibraryMode ? 'group-hover:bg-black/70' : ''
+          } transition-colors`}
         />
       </div>
 
@@ -389,23 +399,32 @@ const DiscordQuestCard: React.FC<DiscordQuestCardProps> = ({
                         Em Progresso...
                       </span>
                       <span className="text-xs text-white/70">
-                        {activeProgress.estimatedEndTime > Date.now() 
-                          ? `${Math.max(0, Math.ceil((activeProgress.estimatedEndTime - Date.now()) / 1000 / 60))} min restantes`
+                        {activeProgress.estimatedEndTime > Date.now()
+                          ? `${Math.max(
+                              0,
+                              Math.ceil((activeProgress.estimatedEndTime - Date.now()) / 1000 / 60)
+                            )} min restantes`
                           : 'Completando...'}
                       </span>
                     </div>
-                    <div 
+                    <div
                       className="w-full h-2 rounded-full overflow-hidden"
                       style={{
-                        background: isHighContrast 
-                          ? 'rgba(255, 255, 255, 0.1)' 
+                        background: isHighContrast
+                          ? 'rgba(255, 255, 255, 0.1)'
                           : 'rgba(0, 0, 0, 0.2)',
                       }}
                     >
                       <div
                         className="h-full rounded-full transition-all duration-300 ease-out"
                         style={{
-                          width: `${Math.min(100, Math.max(0, (activeProgress.secondsDone / activeProgress.secondsNeeded) * 100))}%`,
+                          width: `${Math.min(
+                            100,
+                            Math.max(
+                              0,
+                              (activeProgress.secondsDone / activeProgress.secondsNeeded) * 100
+                            )
+                          )}%`,
                           background: `linear-gradient(90deg, ${accentColor} 0%, ${accentColor}CC 100%)`,
                           boxShadow: `0 0 10px ${accentColor}80`,
                         }}
@@ -413,10 +432,20 @@ const DiscordQuestCard: React.FC<DiscordQuestCardProps> = ({
                     </div>
                     <div className="flex items-center justify-between text-xs text-white/60 mt-1">
                       <span>
-                        {Math.floor(activeProgress.secondsDone / 60)} min / {Math.ceil(activeProgress.secondsNeeded / 60)} min
+                        {Math.floor(activeProgress.secondsDone / 60)} min /{' '}
+                        {Math.ceil(activeProgress.secondsNeeded / 60)} min
                       </span>
                       <span>
-                        {Math.round(Math.min(100, Math.max(0, (activeProgress.secondsDone / activeProgress.secondsNeeded) * 100)))}%
+                        {Math.round(
+                          Math.min(
+                            100,
+                            Math.max(
+                              0,
+                              (activeProgress.secondsDone / activeProgress.secondsNeeded) * 100
+                            )
+                          )
+                        )}
+                        %
                       </span>
                     </div>
                   </div>
@@ -426,7 +455,9 @@ const DiscordQuestCard: React.FC<DiscordQuestCardProps> = ({
                   onClick={() => onExecute?.(quest)}
                   disabled={isExecuting}
                   className={`w-full py-3 px-4 rounded-lg font-semibold text-sm transition-all flex items-center justify-center space-x-2 ${
-                    isExecuting ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105 hover:shadow-lg'
+                    isExecuting
+                      ? 'opacity-50 cursor-not-allowed'
+                      : 'hover:scale-105 hover:shadow-lg'
                   }`}
                   style={{
                     background: isHighContrast
@@ -450,7 +481,7 @@ const DiscordQuestCard: React.FC<DiscordQuestCardProps> = ({
                 </button>
               )}
             </>
-          ) : isCompleted ? (
+          ) : !hideExecuteButton && isCompleted ? (
             <div className="flex space-x-2">
               <button
                 className={`flex-1 py-2.5 px-4 rounded-lg font-medium text-sm transition-all ${
